@@ -39,6 +39,12 @@ public class QuadraticEquationTest {
         assertArrayEquals(new double[]{-0.67}, qe.solve(9.0, 12.0, 4.0), 0.001);
         // 4*x^2 - 20*x + 25
         assertArrayEquals(new double[]{2.5}, qe.solve(4.0, -20.0, 25.0), 0.001);
+        // x^2
+        assertArrayEquals(new double[]{0.0}, qe.solve(1.0, 0.0, 0.0), 0.001);
+        // 100*x
+        assertArrayEquals(new double[]{0.0}, qe.solve(0.0, 100.0, 0.0), 0.001);
+        // 5*x + 2
+        assertArrayEquals(new double[]{-0.4}, qe.solve(0.0, 5.0, 2.0), 0.001);
     }
 
     @Test
@@ -51,10 +57,11 @@ public class QuadraticEquationTest {
         assertArrayEquals(new double[]{}, qe.solve(1.0, 0.0, 25.0), 0.001);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void invalidArgument(){
-        // 0*x^2 + 2*x + 4
-        qe.solve(0.0, 2.0, 4.0);
+    @Test
+    public void anySolution(){
+        // a == b == b == 0
+        assertArrayEquals(new double[]{Double.NaN}, qe.solve(0.0, 0.0, 0.0), 0.001);
+
     }
 
 }
